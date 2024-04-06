@@ -1,0 +1,86 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "name": "Компуктер",
+      "description": "ну компуктер такой",
+      "img": "",
+      "category": 1,
+      "price_per_purchase": 60000,
+      "created_at": "2024-04-06",
+      "updated_at": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "name": "Моник",
+      "description": "монитор для компуктера",
+      "img": "",
+      "category": 1,
+      "price_per_purchase": 20000,
+      "created_at": "2024-04-06",
+      "updated_at": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 3,
+    "fields": {
+      "name": "СНИКУРС",
+      "description": "шэколадка",
+      "img": "",
+      "category": 2,
+      "price_per_purchase": 50,
+      "created_at": "2024-04-06",
+      "updated_at": null
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 4,
+    "fields": {
+      "name": "Аленка",
+      "description": "Самый лучший шоколад",
+      "img": "",
+      "category": 2,
+      "price_per_purchase": 79,
+      "created_at": "2024-04-06",
+      "updated_at": null
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 1,
+    "fields": {
+      "name": "Электроника",
+      "description": "Товары связанные каким-либо образом с электричеством"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 2,
+    "fields": {
+      "name": "Сладости",
+      "description": "моя хотеть шладкова"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "name": "Канцтовары",
+      "description": null
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "name": "Тетради",
+      "description": null
+    }
+  }
+]
