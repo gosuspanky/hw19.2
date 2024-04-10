@@ -1,0 +1,12 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+        <h5 class="card-title">{{ object_list.0.name }}</h5>
+        <p class="card-text">{{ object_list.0.description }}</p>
+        <p class="card-text">{{ object_list.0.price_per_purchase }} руб.</p>
+        <p class="card-text">Категория: {{ object_list.0.category }}</p>
+    </div>
+</div>
+{% endblock %}

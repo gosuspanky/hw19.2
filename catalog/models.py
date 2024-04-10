@@ -13,7 +13,7 @@ class Product(models.Model):
     updated_at = models.DateField(auto_now=True, verbose_name='Дата изменения', **NULLABLE)
 
     def __str__(self):
-        return f'{self.name} в категории {self.category}'
+        return f'{self.name}'
 
     class Meta:
         verbose_name = 'продукт'
