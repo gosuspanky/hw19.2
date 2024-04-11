@@ -10,10 +10,8 @@
                 <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
             </div>
             <div class="card-body">
-                <h1 class="card-title pricing-card-title">{{ object.price_per_purchase }} руб.</h1>
-                <img class="card-img-top" src="{{ object.img|my_media }}">
-                {{ object.description }}<br>
-                <button type="button" class="btn btn-lg btn-block btn-outline-primary">Купить</button>
+                {{ object.description|truncatechars:30 }}<br>
+                <a href="{% url 'catalog:category_products' object.pk %}" type="button" class="btn btn-lg btn-block btn-outline-primary">Товары</a>
             </div>
         </div>
     </div>

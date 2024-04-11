@@ -1,0 +1,16 @@
+{% extends 'catalog/base.html' %}
+
+{% block content %}
+<div class="col-3">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">{{ object.price_per_purchase }} руб.</h1>
+                {{ object.description }}<br>
+                <a href="{% url 'catalog:category_products' object.pk %}" type="button" class="btn btn-lg btn-block btn-outline-primary">Вернуться</a>
+            </div>
+        </div>
+    </div>
+{% endblock %}

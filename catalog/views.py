@@ -1,12 +1,13 @@
 from django.shortcuts import render
 
-from catalog.models import Product
+from catalog.models import Product, Category
 
 
 def home(request):
-    product_list = Product.objects.all()
+    category_list = Category.objects.all()
     context = {
-        'object_list': product_list,
+        'object_list': category_list,
+        'title': 'Доступные категории товаров'
     }
     return render(request, 'catalog/home.html', context)
 
@@ -24,9 +25,19 @@ def contacts(request):
     return render(request, 'catalog/contacts.html')
 
 
-def product(request):
-    product_list = Product.objects.all()
+def category_products(request, pk):
+    category_item = Category.objects.get(pk=pk)
     context = {
-        'object_list': product_list,
+        'object_list': Product.objects.filter(category_id=pk),
+        'title': f'Категория: {category_item.name}'
     }
-    return render(request, 'catalog/product.html', context)
+    return render(request, 'catalog/products.html', context)
+
+
+def computer_description(request, pk):
+    product = Product.objects.get(pk=pk)
+    context = {
+        'object': product,
+        'img': product.img
+    }
+    return render(request, 'catalog/computer.html', context)
