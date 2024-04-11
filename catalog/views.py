@@ -34,10 +34,9 @@ def category_products(request, pk):
     return render(request, 'catalog/products.html', context)
 
 
-def computer_description(request, pk):
+def product_description(request, pk):
     product = Product.objects.get(pk=pk)
     context = {
         'object': product,
-        'img': product.img
     }
-    return render(request, 'catalog/computer.html', context)
+    return render(request, 'catalog/product.html', context)
