@@ -1,0 +1,28 @@
+{% extends 'catalog/base.html' %}
+{% load my_tags %}
+
+{% block content %}
+<div class="row text-center">
+    <div class="col-12 mb-5">
+        <a href="{% url 'catalog:create' %}" class="btn btn-outline-primary">Создать</a>
+    </div>
+    {% for object in object_list %}
+    <div class="col-3">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">{{ object.name }}</h4>
+            </div>
+            <div class="card-body">
+                {{ object.content }}<br>
+                <a href="{% url 'catalog:view' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-secondary">View</a>
+                <a href="{% url 'catalog:edit' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'catalog:delete' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-danger">Delete</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

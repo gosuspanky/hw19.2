@@ -21,7 +21,6 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-
     name = models.CharField(max_length=250, verbose_name='Наименование')
     description = models.TextField(**NULLABLE)
 
@@ -31,3 +30,20 @@ class Category(models.Model):
     class Meta:
         verbose_name = 'категория'
         verbose_name_plural = 'категории'
+
+
+class Blog(models.Model):
+    name = models.CharField(max_length=100, verbose_name='Заголовок')
+    slug = models.CharField(**NULLABLE, max_length=250, verbose_name='slug')
+    content = models.TextField(**NULLABLE, verbose_name='содержимое')
+    img = models.ImageField(upload_to='catalog/', **NULLABLE, verbose_name='Превью')
+    created_at = models.DateField(auto_now_add=True, verbose_name='Дата создания', **NULLABLE)
+    is_published = models.BooleanField(**NULLABLE, default=True, verbose_name='Признак публикации')
+    views_count = models.IntegerField(**NULLABLE, default=0, verbose_name='Счетчик просмотров')
+
+    def __str__(self):
+        return f'{self.name}'
+
+    class Meta:
+        verbose_name = 'материал'
+        verbose_name_plural = 'материалы'
