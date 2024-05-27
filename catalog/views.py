@@ -4,7 +4,7 @@ from django.views.generic import ListView, TemplateView, DetailView, CreateView,
 from pytils.translit import slugify
 
 from catalog.forms import ProductForm
-from catalog.models import Product, Category, Blog
+from catalog.models import Product, Category, Blog, Version
 
 
 class CategoryListView(ListView):
@@ -40,6 +40,15 @@ class ProductListView(ListView):
     def get_context_data(self, *args, **kwargs):
         category_item = Category.objects.get(pk=self.kwargs.get('pk'))
         context_data = super().get_context_data(*args, **kwargs)
+
+        for product in self.object_list:
+            versions = Version.objects.filter(product_name=product)
+            active_versions = versions.filter(is_active_version=True)
+            if active_versions:
+                product.name_version = active_versions.last().version_name
+                product.number_version = active_versions.last().version_num
+        context_data['object_list'] = self.object_list
+
         context_data['title'] = f'Категория: {category_item.name}'
         return context_data
 

@@ -11,10 +11,10 @@ class ProductForm(forms.ModelForm):
     def clean_name(self):
         cleaned_data = self.cleaned_data['name']
 
-        forbidden_words = ["казино", "криптовалюта", "крипта", "биржа", "дешево", "бесплатно", "обман", "полиция",
+        forbidden_words_list = ["казино", "криптовалюта", "крипта", "биржа", "дешево", "бесплатно", "обман", "полиция",
                            "радар"]
 
-        if cleaned_data.lower() in forbidden_words:
+        if cleaned_data.lower() in forbidden_words_list:
             raise forms.ValidationError('В названии применено некорректное слово')
 
         return cleaned_data

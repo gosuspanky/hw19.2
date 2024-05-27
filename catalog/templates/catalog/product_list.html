@@ -19,6 +19,7 @@
             <h1 class="card-title pricing-card-title">{{ object.price_per_purchase }} руб.</h1>
             <img class="card-img-top" src="{{ object.img|my_media }}">
             {{ object.description|truncatechars:10 }}<br>
+            {{ object.name_version}}<br>
             <a href="{% url 'catalog:edit_product' object.pk %}" type="button"
                class="btn btn-sm btn-outline-secondary">Edit</a>
             <a href="{% url 'catalog:delete_product' object.pk %}" type="button"
