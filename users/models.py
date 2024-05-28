@@ -1,8 +1,7 @@
 from django.contrib.auth.models import AbstractUser
 from django.db import models
 
-from catalog.models import NULLABLE
-
+NULLABLE = {'null': True, 'blank': True}
 
 
 class User(AbstractUser):
@@ -16,5 +15,3 @@ class User(AbstractUser):
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = []
-
-

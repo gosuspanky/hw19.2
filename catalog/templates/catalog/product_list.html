@@ -2,9 +2,11 @@
 {% load my_tags %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <div class="col-12 mb-5">
     <a class="btn btn-outline-primary" href="{% url 'catalog:create_product' %}">Добавить товар</a>
 </div>
+{% endif %}
 {% for object in object_list %}
 <div class="col-3">
     <div class="card mb-4 box-shadow">
@@ -20,10 +22,12 @@
             <img class="card-img-top" src="{{ object.img|my_media }}">
             {{ object.description|truncatechars:10 }}<br>
             {{ object.name_version}}<br>
+            {% if user.is_authenticated %}
             <a href="{% url 'catalog:edit_product' object.pk %}" type="button"
                class="btn btn-sm btn-outline-secondary">Edit</a>
             <a href="{% url 'catalog:delete_product' object.pk %}" type="button"
                class="btn btn-sm btn-outline-danger">Delete</a>
+            {% endif %}
         </div>
     </div>
 </div>
