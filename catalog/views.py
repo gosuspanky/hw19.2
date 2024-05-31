@@ -1,3 +1,5 @@
+import secrets
+
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.exceptions import PermissionDenied
 from django.forms import inlineformset_factory
@@ -56,7 +58,7 @@ class ProductListView(ListView):
         return context_data
 
 
-class ProductDetailView(DetailView, LoginRequiredMixin):
+class ProductDetailView(LoginRequiredMixin, DetailView):
     model = Product
     template_name = 'catalog/product.html'
     extra_context = {
@@ -64,13 +66,20 @@ class ProductDetailView(DetailView, LoginRequiredMixin):
     }
 
 
-class ProductCreateView(CreateView, LoginRequiredMixin):
+class ProductCreateView(LoginRequiredMixin, CreateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:home')
 
+    def form_valid(self, form):
+        product = form.save()
+        user = self.request.user
 
-class ProductUpdateView(UpdateView, LoginRequiredMixin):
+        product.owner = user
+        product.save()
+
+
+class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
     form_class = ProductForm
     success_url = reverse_lazy('catalog:home')

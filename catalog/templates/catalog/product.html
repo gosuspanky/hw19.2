@@ -10,7 +10,8 @@
             <div class="card-body">
                 <h1 class="card-title pricing-card-title">{{ object.price_per_purchase }} руб.</h1>
                 <img class="card-img-top" src="{{ object.img|my_media }}">
-                {{ object.description }}<br>
+                Описание: {{ object.description }}<br>
+                Автор: {{ object.owner }}<br>
                 <input type="button" class="btn btn-lg btn-block btn-outline-primary" onclick="history.back();" value="Вернуться"/>
             </div>
         </div>
