@@ -22,7 +22,7 @@
             <img class="card-img-top" src="{{ object.img|my_media }}">
             {{ object.description|truncatechars:10 }}<br>
             {{ object.name_version}}<br>
-            {% if user.is_authenticated %}
+            {% if user == product.owner or perm.product.can_edit_published and perm.product.can_edit_category and perm.product.can_edit_desc %}
             <a href="{% url 'catalog:edit_product' object.pk %}" type="button"
                class="btn btn-sm btn-outline-secondary">Edit</a>
             <a href="{% url 'catalog:delete_product' object.pk %}" type="button"
