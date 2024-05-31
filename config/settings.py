@@ -155,4 +155,4 @@ PASSWORD_HASHERS = [
     "django.contrib.auth.hashers.BCryptSHA256PasswordHasher",
 ]
 
-LOGIN_URL = 'users/login.html'
+LOGIN_URL = '/users/'

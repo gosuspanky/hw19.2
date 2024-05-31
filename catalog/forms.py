@@ -17,13 +17,7 @@ class StyleFormMixin:
 class ProductForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        fields = ('name', 'description', 'price_per_purchase', "category", "owner")
-
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #
-    #     for field_name, field in self.fields.items():
-    #         field.widget.attrs['class'] = 'form-control'
+        fields = ('name', 'description', 'price_per_purchase', "category", "owner", 'is_published')
 
     def clean_name(self):
         cleaned_data = self.cleaned_data['name']
@@ -42,14 +36,8 @@ class VersionForm(StyleFormMixin, forms.ModelForm):
         model = Version
         fields = '__all__'
 
-    # def __init__(self, *args, **kwargs):
-    #     super().__init__(*args, **kwargs)
-    #
-    #     for field_name, field in self.fields.items():
-    #         field.widget.attrs['class'] = 'form-control'
-
 
 class ProductModeratorForm(StyleFormMixin, forms.ModelForm):
     class Meta:
         model = Product
-        fields = ("description", "category")
+        fields = ("description", "category", "is_published")
