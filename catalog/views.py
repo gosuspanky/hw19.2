@@ -76,6 +76,8 @@ class ProductCreateView(LoginRequiredMixin, CreateView):
         product.owner = user
         product.save()
 
+        return super().form_valid(form)
+
 
 class ProductUpdateView(LoginRequiredMixin, UpdateView):
     model = Product
