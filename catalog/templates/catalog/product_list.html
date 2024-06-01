@@ -9,25 +9,27 @@
 {% endif %}
 {% for object in object_list %}
 <div class="col-3">
-    <div class="card mb-4 box-shadow">
-        <div class="card-header">
-            <h4 class="my-0 font-weight-normal">
-                <a href="{% url 'catalog:product_description' object.pk %}">
-                    {{object.name }}
-                </a>
-            </h4>
-        </div>
-        <div class="card-body">
-            <h1 class="card-title pricing-card-title">{{ object.price_per_purchase }} руб.</h1>
-            <img class="card-img-top" src="{{ object.img|my_media }}">
-            {{ object.description|truncatechars:10 }}<br>
-            {{ object.name_version}}<br>
-            {% if user == object.owner or perm.object.can_edit_published and perm.object.can_edit_category and perm.object.can_edit_desc %}
-            <a href="{% url 'catalog:edit_product' object.pk %}" type="button"
-               class="btn btn-sm btn-outline-secondary">Edit</a>
-            <a href="{% url 'catalog:delete_product' object.pk %}" type="button"
-               class="btn btn-sm btn-outline-danger">Delete</a>
-            {% endif %}
+    <div class="row">
+        <div class="card mb-4 box-shadow">
+            <div class="card-header">
+                <h4 class="my-0 font-weight-normal">
+                    <a href="{% url 'catalog:product_description' object.pk %}">
+                        {{object.name }}
+                    </a>
+                </h4>
+            </div>
+            <div class="card-body">
+                <h1 class="card-title pricing-card-title">{{ object.price_per_purchase }} руб.</h1>
+                <img class="card-img-top" src="{{ object.img|my_media }}">
+                {{ object.description|truncatechars:10 }}<br>
+                {{ object.name_version}}<br>
+                {% if user == object.owner or perm.object.can_edit_published and perm.object.can_edit_category and perm.object.can_edit_desc %}
+                <a href="{% url 'catalog:edit_product' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-secondary">Edit</a>
+                <a href="{% url 'catalog:delete_product' object.pk %}" type="button"
+                   class="btn btn-sm btn-outline-danger">Delete</a>
+                {% endif %}
+            </div>
         </div>
     </div>
 </div>

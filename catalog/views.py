@@ -8,6 +8,7 @@ from pytils.translit import slugify
 
 from catalog.forms import ProductForm, VersionForm, ProductModeratorForm
 from catalog.models import Product, Category, Blog, Version
+from catalog.services import get_category_from_cache
 
 
 class CategoryListView(LoginRequiredMixin, ListView):
@@ -15,6 +16,9 @@ class CategoryListView(LoginRequiredMixin, ListView):
     extra_context = {
         'title': 'Доступные категории товаров'
     }
+
+    def get_queryset(self):
+        return get_category_from_cache()
 
 
 class ContactPageView(LoginRequiredMixin, TemplateView):
